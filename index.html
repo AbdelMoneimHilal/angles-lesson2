@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع تعليم قياس الزوايا الشامل - الرياضيات</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --primary-light: #3b82f6;
+            --accent-color: #0d9488;
+            --bg-color: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-color: #0f172a;
+            --text-muted: #475569;
+            --border-color: #e2e8f0;
+            --acute-color: #10b981;
+            --right-color: #f59e0b;
+            --obtuse-color: #ef4444;
+            --straight-color: #8b5cf6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            direction: rtl;
+            text-align: right;
+            line-height: 1.9;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--primary-light);
+            padding-bottom: 20px;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .section {
+            margin-bottom: 35px;
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            background-color: #ffffff;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0fdf4;
+            padding-bottom: 8px;
+        }
+
+        .section-title span.icon {
+            background-color: #dbeafe;
+            color: var(--primary-color);
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        p, li {
+            font-size: 1.05rem;
+            color: var(--text-color);
+        }
+
+        ul, ol {
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background-color: #f0f9ff;
+            border-right: 4px solid var(--primary-light);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 14px 16px;
+            text-align: center;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 700;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: white;
+        }
+
+        .badge-acute { background-color: var(--acute-color); }
+        .badge-right { background-color: var(--right-color); }
+        .badge-obtuse { background-color: var(--obtuse-color); }
+        .badge-straight { background-color: var(--straight-color); }
+
+        .interactive-container {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .protractor-box {
+            position: relative;
+            width: 450px;
+            height: 230px;
+            margin: 20px auto;
+            background-image: url('s.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-top-left-radius: 225px;
+            border-top-right-radius: 225px;
+            border: 2px solid rgba(0,0,0,0.15);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        .protractor-center-dot {
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background-color: #dc2626;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            border: 2px solid #fff;
+        }
+
+        .base-line {
+            position: absolute;
+            bottom: 0;
+            left: 5%;
+            right: 5%;
+            height: 3px;
+            background-color: #2563eb;
+            z-index: 10;
+        }
+
+        .rotatable-ray {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 200px;
+            height: 3px;
+            background-color: #dc2626;
+            transform-origin: left center;
+            transition: transform 0.1s ease-out;
+            z-index: 15;
+        }
+
+        .controls-box {
+            margin-top: 25px;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input[type=range] {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #cbd5e1;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .live-status {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 10px;
+            background: white;
+            border: 1px solid var(--border-color);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .quiz-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .quiz-btn {
+            background-color: #f1f5f9;
+            border: 2px solid var(--border-color);
+            padding: 12px;
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .quiz-btn:hover {
+            background-color: #e2e8f0;
+            border-color: var(--primary-light);
+        }
+
+        .quiz-btn.active {
+            background-color: var(--primary-light);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .action-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            transition: background 0.2s ease;
+        }
+
+        .action-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .feedback-message {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .input-text-box {
+            padding: 10px;
+            font-size: 1.1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            width: 140px;
+            text-align: center;
+            font-family: 'Cairo', sans-serif;
+            margin-left: 10px;
+        }
+
+        .angle-canvas-container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin: 0 auto;
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>📐 درس قياس الزوايا وتصنيفها</h1>
+        <h2>مادة الرياضيات — الشرح التفاعلي والتمارين المدرسية</h2>
+        <h3>الاستاذ عبدالمنعم هلال</h3>
+    </header>
+
+    <!-- 1. مفهوم الزاوية -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon">1</span>
+            <h2>مفهوم الزاوية وعناصرها الأساسية</h2>
+        </div>
+        <p><b>نصف المستقيم: </b >هو جزء من المستقيم له بداية وليس له نهاية    </p>
+        <p><b>الزاوية:</b> تتشكل من التقاء نصفي مستقيمين لهما نقطة البداية نفسها (رأس الزاوية). وتسمى بثلاثة حروف مثل {BAC} بحيث يكون رأس الزاوية في المنتصف تماماً.</p>
+    </div>
+
+    <!-- 2. داخل الزاوية وخارجها -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon">2</span>
+            <h2>داخل الزاوية وخارجها</h2>
+        </div>
+        <p>النقطة الواقعة في الحيز المحصور بين ضلعي الزاوية تسمى نقطة <b>داخل الزاوية</b>، بينما النقطة الواقعة خارجهما تسمى نقطة <b>خارج الزاوية</b>.</p>
+    </div>
+
+    <!-- 3. المنقلة التعليمية الأساسية -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon">3</span>
+            <h2>أداة القياس: المنقلة الهندسية</h2>
+        </div>
+        <p>المنقلة أداة شفافة مرقمة من ^0 إلى ^180 بجهتين لمساعدة الطالب على القياس الصحيح ورسم الزوايا بدقة.</p>
+
+        <div class="interactive-container">
+            <h3>🧭 محاكي المنقلة التعليمي</h3>
+            <p>حرك المؤشر لمشاهدة حركة شعاع الزاوية فوق المنقلة:</p>
+
+            <div class="protractor-box">
+                <div class="base-line"></div>
+                <div class="protractor-center-dot"></div>
+                <div id="rotatableRay" class="rotatable-ray"></div>
+            </div>
+
+            <div class="controls-box">
+                <div class="slider-label">
+                    <span>قياس الزاوية الحالي:</span>
+                    <span id="angleDegreeDisplay">60°</span>
+                </div>
+                <input type="range" id="angleRange" min="0" max="180" step="10" value="60" oninput="updateProtractorSimulator(this.value)">
+                
+                <div class="live-status">
+                    التصنيف التلقائي: <span id="angleTypeDisplay" class="badge badge-acute">زاوية حادة</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. جدول تصنيف الزوايا -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon">4</span>
+            <h2>جدول تصنيف الزوايا</h2>
+        </div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>النوع</th>
+                        <th>القياس</th>
+                        <th>الوصف</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="badge badge-acute">حادة</span></td><td>أكثر من 0 درجة وأقل من  90 درجة  </td><td>أصغر من الزاوية القائمة</td></tr>
+                    <tr><td><span class="badge badge-right">قائمة</span></td><td>تساوي 90 درجة</td><td>تشكل تعامدًا تامًا.</td></tr>
+                    <tr><td><span class="badge badge-obtuse">منفرجة</span></td><td>اكثر من 90 درجة وأقل من 180 درجة </td><td>أكبر من القائمة وأصغر من المستقيمة.</td></tr>
+                    <tr><td><span class="badge badge-straight">مستقيمة</span></td><td>تساوي 180 درجة</td><td>ضلعاها على استقامة واحدة.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 5. قسم التمارين التفاعلية المخصصة -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon">5</span>
+            <h2>تمارين تفاعلية شاملة</h2>
+        </div>
+
+        <!-- التمرين الأول: رسمة تفاعلية لتقاطع مستقيمين وتحديد موقع النقطة -->
+        <div class="quiz-card">
+            <h3>التمرين الأول: موقع النقطة بالنسبة للزاوية (رسم تفاعلي)</h3>
+            <p style="margin-top: 10px; font-weight: 650;">تأمل الرسم التفاعلي أدناه الذي يوضح زاوية ناتجة عن تقاطع مستقيمين والنقطة الحمراء (M). هل تقع النقطة داخل الزاوية أم خارجها؟</p>
+            
+            <div class="interactive-container" style="background: white; border: 1px dashed #cbd5e1; margin-top: 15px;">
+                <div class="angle-canvas-container">
+                    <svg id="angleSvg" width="300" height="200" viewBox="0 0 300 200">
+                        <!-- تظليل منطقة وحيز الزاوية بوضوح في كل سؤال -->
+                        <path id="svgAngleSector" d="" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4" />
+                        <!-- ضلع أساسي أفقي -->
+                        <line x1="50" y1="160" x2="250" y2="160" stroke="#2563eb" stroke-width="3" />
+                        <!-- ضلع متحرك للزاوية -->
+                        <line id="svgRay" x1="50" y1="160" x2="200" y2="40" stroke="#2563eb" stroke-width="3" />
+                        <!-- رأس الزاوية -->
+                        <circle cx="50" cy="160" r="5" fill="#1e3a8a" />
+                        <text x="35" y="175" font-family="Cairo" font-size="14" fill="#1e3a8a" font-weight="bold">A</text>
+                        <!-- النقطة التفاعلية -->
+                        <circle id="svgPoint" cx="120" cy="110" r="7" fill="#dc2626" />
+                        <text id="svgPointLabel" x="130" y="105" font-family="Cairo" font-size="14" fill="#dc2626" font-weight="bold">M</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="quiz-options" id="q1Options" style="margin-top: 20px;">
+                <button class="quiz-btn" onclick="selectPointAnswer(this, 'داخل')">داخل الزاوية</button>
+                <button class="quiz-btn" onclick="selectPointAnswer(this, 'خارج')">خارج الزاوية</button>
+            </div>
+            <div style="text-align: center;">
+                <button class="action-btn" onclick="checkPointAnswer()">تحقق من موقع النقطة</button>
+                <button class="action-btn" style="background-color: #64748b; margin-right: 10px;" onclick="initPointExercise()">سؤال جديد</button>
+            </div>
+            <div id="pointFeedback" class="feedback-message" style="text-align: center;"></div>
+        </div>
+
+        <!-- التمرين الثاني: قياس الزاوية على المنقلة (قيم عشرات فقط) -->
+        <div class="quiz-card" style="margin-top: 25px;">
+            <h3>التمرين الثاني: قياس الزاوية من على المنقلة</h3>
+            <p id="angleQuizText" style="margin-top: 10px; font-weight: 650;"></p>
+            
+            <div class="interactive-container" style="background: white; border: 1px dashed #cbd5e1; margin-top: 15px;">
+                <div class="protractor-box">
+                    <div class="base-line"></div>
+                    <div class="protractor-center-dot"></div>
+                    <div id="quizRay2" class="rotatable-ray"></div>
+                </div>
+            </div>
+
+            <div style="margin: 15px 0; text-align: center;">
+                <input type="number" id="userAngleInput" class="input-text-box" placeholder="أدخل قياسك"> <b>درجة (°)</b>
+            </div>
+            <div style="text-align: center;">
+                <button class="action-btn" onclick="checkAngleValueAnswer()">تحقق من قياس الزاوية</button>
+                <button class="action-btn" style="background-color: #64748b; margin-right: 10px;" onclick="initAngleValueExercise()">سؤال جديد</button>
+            </div>
+            <div id="angleValueFeedback" class="feedback-message" style="text-align: center;"></div>
+        </div>
+
+        <!-- التمرين الثالث: تصنيف الزاوية على المنقلة (قيم عشرات فقط) -->
+        <div class="quiz-card" style="margin-top: 25px;">
+            <h3>التمرين الثالث: تصنيف نوع الزاوية من على المنقلة</h3>
+            <p id="classifyQuizText" style="margin-top: 10px; font-weight: 650;"></p>
+            
+            <div class="interactive-container" style="background: white; border: 1px dashed #cbd5e1; margin-top: 15px;">
+                <div class="protractor-box">
+                    <div class="base-line"></div>
+                    <div class="protractor-center-dot"></div>
+                    <div id="quizRay3" class="rotatable-ray"></div>
+                </div>
+            </div>
+
+            <div class="quiz-options" id="q3Options" style="justify-content: center; margin-top: 20px;">
+                <button class="quiz-btn" onclick="selectClassifyAnswer(this, 'حادة')">حادة</button>
+                <button class="quiz-btn" onclick="selectClassifyAnswer(this, 'قائمة')">قائمة</button>
+                <button class="quiz-btn" onclick="selectClassifyAnswer(this, 'منفرجة')">منفرجة</button>
+                <button class="quiz-btn" onclick="selectClassifyAnswer(this, 'مستقيمة')">مستقيمة</button>
+            </div>
+            <div style="text-align: center; margin-top: 15px;">
+                <button class="action-btn" onclick="checkClassifyAnswer()">تحقق من التصنيف</button>
+                <button class="action-btn" style="background-color: #64748b; margin-right: 10px;" onclick="initClassifyExercise()">سؤال جديد</button>
+            </div>
+            <div id="classifyFeedback" class="feedback-message" style="text-align: center;"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const tensAngles = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180];
+
+    function getRandomTensAngle() {
+        let index = Math.floor(Math.random() * tensAngles.length);
+        return tensAngles[index];
+    }
+
+    // 1. محاكي المنقلة الأساسي
+    function updateProtractorSimulator(deg) {
+        document.getElementById('angleDegreeDisplay').textContent = deg + '°';
+        const ray = document.getElementById('rotatableRay');
+        const typeDisplay = document.getElementById('angleTypeDisplay');
+        ray.style.transform = `rotate(-${deg}deg)`;
+
+        let name = "", cls = "";
+        let val = parseInt(deg);
+        if (val === 90) { name = "زاوية قائمة"; cls = "badge badge-right"; }
+        else if (val === 180) { name = "زاوية مستقيمة"; cls = "badge badge-straight"; }
+        else if (val > 0 && val < 90) { name = "زاوية حادة"; cls = "badge badge-acute"; }
+        else if (val > 90 && val < 180) { name = "زاوية منفرجة"; cls = "badge badge-obtuse"; }
+        else { name = "زاوية صفرية"; cls = "badge"; }
+
+        typeDisplay.textContent = name;
+        typeDisplay.className = cls;
+    }
+    updateProtractorSimulator(60);
+
+    // 2. التمرين الأول: تظليل حيز الزاوية ووضع النقطة في الجهة المعاكسة تماماً عند خروجها
+    let currentPointState = "";
+    let userSelectedPointAns = "";
+
+    function initPointExercise() {
+        userSelectedPointAns = "";
+        document.getElementById('pointFeedback').textContent = "";
+        document.querySelectorAll('#q1Options .quiz-btn').forEach(b => b.classList.remove('active'));
+
+        let randomDeg = Math.floor(Math.random() * 100) + 40; // زاوية واضحة
+        let rad = (randomDeg * Math.PI) / 180;
+
+        let x2 = 50 + 130 * Math.cos(-rad);
+        let y2 = 160 + 130 * Math.sin(-rad);
+
+        let svgRay = document.getElementById('svgRay');
+        svgRay.setAttribute('x2', x2);
+        svgRay.setAttribute('y2', y2);
+
+        // رسم تظليل القوس (حيز الزاوية) ليشير لجهة وزاوية الفتحة بوضوح
+        let svgSector = document.getElementById('svgAngleSector');
+        let largeArc = randomDeg > 180 ? 1 : 0;
+        svgSector.setAttribute('d', `M 50 160 L ${x2} ${y2} A 130 130 0 ${largeArc} 0 180 160 Z`);
+
+        let isInside = Math.random() < 0.5;
+        currentPointState = isInside ? "داخل" : "خارج";
+
+        let px, py;
+        if (isInside) {
+            // نقطة داخل الحيز المحصور بين الضلعين
+            let innerDeg = randomDeg * 0.5;
+            let innerRad = (innerDeg * Math.PI) / 180;
+            let dist = 70;
+            px = 50 + dist * Math.cos(-innerRad);
+            py = 160 + dist * Math.sin(-innerRad);
+        } else {
+            // نقطة خارج الزاوية تماماً في الجهة المعاكسة (تحت الضلع الأفقي أو في الاتجاه المعاكس لفتحته)
+            px = 120 + Math.random() * 60;
+            py = 185; // أسفل الخط الأفقي تماماً (خارج الحيز الداخلي للزاوية)
+        }
+
+        let svgPoint = document.getElementById('svgPoint');
+        let svgPointLabel = document.getElementById('svgPointLabel');
+        svgPoint.setAttribute('cx', px);
+        svgPoint.setAttribute('cy', py);
+        svgPointLabel.setAttribute('x', px + 10);
+        svgPointLabel.setAttribute('y', py + 5);
+    }
+    initPointExercise();
+
+    function selectPointAnswer(btn, ans) {
+        userSelectedPointAns = ans;
+        document.querySelectorAll('#q1Options .quiz-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+
+    function checkPointAnswer() {
+        const fb = document.getElementById('pointFeedback');
+        if (!userSelectedPointAns) {
+            fb.style.color = "#d97706";
+            fb.textContent = "⚠️ الرجاء اختيار (داخل) أو (خارج) أولاً.";
+            return;
+        }
+        if (userSelectedPointAns === currentPointState) {
+            fb.style.color = "#16a34a";
+            fb.textContent = "🎉 إجابة صحيحة وممتازة!";
+        } else {
+            fb.style.color = "#dc2626";
+            fb.textContent = "❌ إجابة غير دقيقة، حاول مرة أخرى.";
+        }
+    }
+
+    // 3. تمرين قياس الزاوية عشوائياً (مضاعفات العشرات فقط)
+    let targetAngleValue2 = 0;
+
+    function initAngleValueExercise() {
+        document.getElementById('angleValueFeedback').textContent = "";
+        document.getElementById('userAngleInput').value = "";
+        
+        targetAngleValue2 = getRandomTensAngle();
+        document.getElementById('quizRay2').style.transform = `rotate(-${targetAngleValue2}deg)`;
+        
+        document.getElementById('angleQuizText').textContent = `تأمل المنقلة أدناه. الشعاع الأحمر مستقر على تدريج معين (من مضاعفات العشرات). اقرأ القياس واكتب القيمة بدقة:`;
+    }
+    initAngleValueExercise();
+
+    function checkAngleValueAnswer() {
+        const val = parseInt(document.getElementById('userAngleInput').value);
+        const fb = document.getElementById('angleValueFeedback');
+        if (isNaN(val)) {
+            fb.style.color = "#d97706";
+            fb.textContent = "⚠️ الرجاء إدخال رقم قياس الزاوية في الخانة المخصصة.";
+            return;
+        }
+        if (val === targetAngleValue2) {
+            fb.style.color = "#16a34a";
+            fb.textContent = `🎉 أحسنت! قرأت القياس بصورة صحيحة تماماً (${targetAngleValue2}°).`;
+        } else {
+            fb.style.color = "#dc2626";
+            fb.textContent = `❌ إجابة غير دقيقة. القيمة الصحيحة حسب تطابق الشعاع هي (${targetAngleValue2}°).`;
+        }
+    }
+
+    // 4. تمرين تصنيف الزاوية عشوائياً (مضاعفات العشرات فقط)
+    let targetAngleValue3 = 0;
+    let selectedClassifyType = "";
+
+    function initClassifyExercise() {
+        selectedClassifyType = "";
+        document.getElementById('classifyFeedback').textContent = "";
+        document.querySelectorAll('#q3Options .quiz-btn').forEach(b => b.classList.remove('active'));
+        
+        targetAngleValue3 = getRandomTensAngle();
+        document.getElementById('quizRay3').style.transform = `rotate(-${targetAngleValue3}deg)`;
+        
+        document.getElementById('classifyQuizText').textContent = `انظر إلى المنقلة أدناه وتطابق الشعاع مع تدريجات العشرات، ثم حدد نوع هذه الزاوية:`;
+    }
+    initClassifyExercise();
+
+    function selectClassifyAnswer(btn, type) {
+        selectedClassifyType = type;
+        document.querySelectorAll('#q3Options .quiz-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+
+    function checkClassifyAnswer() {
+        const fb = document.getElementById('classifyFeedback');
+        if (!selectedClassifyType) {
+            fb.style.color = "#d97706";
+            fb.textContent = "⚠️ الرجاء اختيار نوع الزاوية أولاً.";
+            return;
+        }
+
+        let correctType = "";
+        if (targetAngleValue3 === 90) correctType = "قائمة";
+        else if (targetAngleValue3 === 180) correctType = "مستقيمة";
+        else if (targetAngleValue3 < 90) correctType = "حادة";
+        else correctType = "منفرجة";
+
+        if (selectedClassifyType === correctType) {
+            fb.style.color = "#16a34a";
+            fb.textContent = `🎉 إجابة صحيحة وممتازة! الزاوية المطابقة للشعاع (${targetAngleValue3}°) هي زاوية [${correctType}].`;
+        } else {
+            fb.style.color = "#dc2626";
+            fb.textContent = `❌ إجابة خاطئة. القياس الذي يشير إليه الشعاع هو (${targetAngleValue3}°) وهي تصنف كزاوية [${correctType}].`;
+        }
+    }
+</script>
+
+</body>
+</html>
