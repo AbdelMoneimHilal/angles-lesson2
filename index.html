@@ -124,7 +124,6 @@
             margin-bottom: 6px;
         }
 
-        /* تنسيق جدول متجاوب للهواتف بدون سحب أفقي */
         .cards-table-container {
             display: flex;
             flex-direction: column;
@@ -215,12 +214,12 @@
             z-index: 10;
         }
 
-        /* تعديل طول الشعاع ليكون أقصر ومتناسباً مع المنقلة */
+        /* تم تقصير طول الشعاع الأحمر قليلاً ليصبح متناسباً ومثالياً تماماً */
         .rotatable-ray {
             position: absolute;
             bottom: 0;
             left: 50%;
-            width: 110px;
+            width: 90px;
             height: 2.5px;
             background-color: #dc2626;
             transform-origin: left center;
@@ -373,7 +372,6 @@
             justify-content: center;
         }
 
-        /* تحسين التجاوب للشاشات الكبيرة */
         @media (min-width: 768px) {
             body {
                 padding: 30px;
@@ -483,7 +481,6 @@
             <h2>جدول تصنيف الزوايا</h2>
         </div>
         
-        <!-- تصميم تفاعلي متجاوب (يتحول لبطاقات مرتبة في الجوال، وجدول كلاسيكي في الشاشات الكبيرة) -->
         <div class="cards-table-container">
             <table>
                 <thead style="display: none;">
