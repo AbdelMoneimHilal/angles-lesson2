@@ -44,7 +44,7 @@
             max-width: 950px;
             margin: 0 auto;
             background: var(--card-bg);
-            padding: 25px;
+            padding: 20px;
             border-radius: 24px;
             box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
         }
@@ -58,41 +58,37 @@
 
         header h1 {
             color: var(--primary-color);
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             font-weight: 800;
             margin-bottom: 8px;
         }
 
         header h2 {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--primary-light);
             margin-bottom: 5px;
         }
 
         header h3 {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
             font-weight: 600;
         }
 
         .section {
             margin-bottom: 25px;
-            padding: 20px;
+            padding: 18px;
             border: 1px solid var(--border-color);
             border-radius: 16px;
             background-color: #ffffff;
             transition: all 0.3s ease;
         }
 
-        .section:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-        }
-
         .section-title {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: var(--primary-color);
             margin-bottom: 15px;
             border-bottom: 2px solid #f8fafc;
@@ -102,19 +98,19 @@
         .section-title span.icon {
             background-color: #dbeafe;
             color: var(--primary-color);
-            width: 34px;
-            height: 34px;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 10px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: bold;
             flex-shrink: 0;
         }
 
         p, li {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text-color);
         }
 
@@ -128,43 +124,40 @@
             margin-bottom: 6px;
         }
 
-        .table-responsive {
-            overflow-x: auto;
+        /* تنسيق جدول متجاوب للهواتف بدون سحب أفقي */
+        .cards-table-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
             margin-top: 15px;
-            border-radius: 12px;
+        }
+
+        .angle-card-row {
+            display: flex;
+            flex-direction: column;
+            background: #f8fafc;
             border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 14px;
+            gap: 8px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            white-space: nowrap;
-        }
-
-        th, td {
-            padding: 12px 14px;
-            text-align: center;
-            font-size: 0.95rem;
-        }
-
-        th {
-            background-color: var(--primary-color);
-            color: white;
-            font-weight: 700;
-        }
-
-        tr:not(:last-child) td {
+        .angle-card-row .card-header-cell {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
         }
 
-        tr:nth-child(even) {
-            background-color: #f8fafc;
+        .angle-card-row .card-body-cell {
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
 
         .badge {
             display: inline-block;
-            padding: 4px 10px;
+            padding: 4px 12px;
             border-radius: 20px;
             font-weight: 700;
             font-size: 0.85rem;
@@ -188,8 +181,8 @@
         .protractor-box {
             position: relative;
             width: 100%;
-            max-width: 400px;
-            height: 210px;
+            max-width: 350px;
+            height: 180px;
             margin: 15px auto;
             background-image: url('s.png');
             background-size: contain;
@@ -203,8 +196,8 @@
             position: absolute;
             bottom: 0px;
             left: 50%;
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             background-color: #dc2626;
             border-radius: 50%;
             transform: translateX(-50%);
@@ -215,19 +208,20 @@
         .base-line {
             position: absolute;
             bottom: 0;
-            left: 5%;
-            right: 5%;
-            height: 3px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
             background-color: #2563eb;
             z-index: 10;
         }
 
+        /* تعديل طول الشعاع ليكون أقصر ومتناسباً مع المنقلة */
         .rotatable-ray {
             position: absolute;
             bottom: 0;
             left: 50%;
-            width: 180px;
-            height: 3px;
+            width: 110px;
+            height: 2.5px;
             background-color: #dc2626;
             transform-origin: left center;
             transition: transform 0.1s ease-out;
@@ -236,7 +230,7 @@
 
         .controls-box {
             margin-top: 15px;
-            max-width: 400px;
+            max-width: 350px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -246,7 +240,7 @@
             justify-content: space-between;
             font-weight: bold;
             margin-bottom: 8px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         input[type=range] {
@@ -264,21 +258,21 @@
             border-radius: 10px;
             background: white;
             border: 1px solid var(--border-color);
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
         }
 
         .quiz-card {
             background: #ffffff;
             border: 1px solid var(--border-color);
-            padding: 18px;
+            padding: 16px;
             border-radius: 12px;
             margin-top: 15px;
         }
 
         .quiz-options {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 10px;
             margin: 15px 0;
         }
@@ -289,7 +283,7 @@
             padding: 10px;
             border-radius: 10px;
             font-family: 'Cairo', sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--text-color);
             cursor: pointer;
@@ -311,8 +305,8 @@
             background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 10px 24px;
-            font-size: 0.95rem;
+            padding: 10px 20px;
+            font-size: 0.9rem;
             font-weight: 700;
             border-radius: 8px;
             cursor: pointer;
@@ -343,16 +337,16 @@
 
         .feedback-message {
             margin-top: 12px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
         }
 
         .input-text-box {
             padding: 8px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             border: 2px solid var(--border-color);
             border-radius: 8px;
-            width: 120px;
+            width: 110px;
             text-align: center;
             font-family: 'Cairo', sans-serif;
             margin-left: 8px;
@@ -367,8 +361,8 @@
         .angle-canvas-container {
             position: relative;
             width: 100%;
-            max-width: 280px;
-            height: 180px;
+            max-width: 260px;
+            height: 160px;
             margin: 0 auto;
             background: #f8fafc;
             border: 2px dashed #cbd5e1;
@@ -379,7 +373,7 @@
             justify-content: center;
         }
 
-        /* تحسين التجاوب للشاشات المتوسطة والكبيرة */
+        /* تحسين التجاوب للشاشات الكبيرة */
         @media (min-width: 768px) {
             body {
                 padding: 30px;
@@ -388,10 +382,36 @@
                 padding: 40px;
             }
             header h1 {
-                font-size: 2.2rem;
+                font-size: 2.1rem;
             }
             .section {
                 padding: 25px;
+            }
+            .cards-table-container {
+                display: block;
+                overflow-x: auto;
+                border: 1px solid var(--border-color);
+                border-radius: 12px;
+            }
+            .cards-table-container table {
+                width: 100%;
+                border-collapse: collapse;
+                background: white;
+                white-space: nowrap;
+                display: table;
+            }
+            .angle-card-row {
+                display: table-row;
+                background: transparent;
+                border: none;
+                padding: 0;
+            }
+            .angle-card-row .card-header-cell,
+            .angle-card-row .card-body-cell {
+                display: table-cell;
+                border: 1px solid var(--border-color);
+                padding: 12px 14px;
+                text-align: center;
             }
         }
     </style>
@@ -402,7 +422,7 @@
     <header>
         <h1>📐 درس قياس الزوايا وتصنيفها</h1>
         <h2>مادة الرياضيات — الشرح التفاعلي والتمارين المدرسية</h2>
-        <h3>الأستاذ  هلال</h3>
+        <h3>الأستاذ عبدالمنعم هلال</h3>
     </header>
 
     <!-- 1. مفهوم الزاوية -->
@@ -462,20 +482,34 @@
             <span class="icon">4</span>
             <h2>جدول تصنيف الزوايا</h2>
         </div>
-        <div class="table-responsive">
+        
+        <!-- تصميم تفاعلي متجاوب (يتحول لبطاقات مرتبة في الجوال، وجدول كلاسيكي في الشاشات الكبيرة) -->
+        <div class="cards-table-container">
             <table>
-                <thead>
-                    <tr>
-                        <th>النوع</th>
-                        <th>القياس</th>
-                        <th>الوصف</th>
-                    </tr>
+                <thead style="display: none;">
+                    <tr><th>النوع</th><th>القياس</th><th>الوصف</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td><span class="badge badge-acute">حادة</span></td><td>أكثر من 0° وأقل من 90°</td><td>أصغر من الزاوية القائمة</td></tr>
-                    <tr><td><span class="badge badge-right">قائمة</span></td><td>تساوي 90°</td><td>تشكل تعامدًا تامًا.</td></tr>
-                    <tr><td><span class="badge badge-obtuse">منفرجة</span></td><td>أكثر من 90° وأقل من 180°</td><td>أكبر من القائمة وأصغر من المستقيمة.</td></tr>
-                    <tr><td><span class="badge badge-straight">مستقيمة</span></td><td>تساوي 180°</td><td>ضلعاها على استقامة واحدة.</td></tr>
+                    <tr class="angle-card-row">
+                        <td class="card-header-cell"><strong>النوع:</strong> <span class="badge badge-acute">حادة</span></td>
+                        <td class="card-body-cell"><strong>القياس:</strong> أكثر من 0° وأقل من 90°</td>
+                        <td class="card-body-cell"><strong>الوصف:</strong> أصغر من الزاوية القائمة</td>
+                    </tr>
+                    <tr class="angle-card-row">
+                        <td class="card-header-cell"><strong>النوع:</strong> <span class="badge badge-right">قائمة</span></td>
+                        <td class="card-body-cell"><strong>القياس:</strong> تساوي 90°</td>
+                        <td class="card-body-cell"><strong>الوصف:</strong> تشكل تعامدًا تامًا.</td>
+                    </tr>
+                    <tr class="angle-card-row">
+                        <td class="card-header-cell"><strong>النوع:</strong> <span class="badge badge-obtuse">منفرجة</span></td>
+                        <td class="card-body-cell"><strong>القياس:</strong> أكثر من 90° وأقل من 180°</td>
+                        <td class="card-body-cell"><strong>الوصف:</strong> أكبر من القائمة وأصغر من المستقيمة.</td>
+                    </tr>
+                    <tr class="angle-card-row">
+                        <td class="card-header-cell"><strong>النوع:</strong> <span class="badge badge-straight">مستقيمة</span></td>
+                        <td class="card-body-cell"><strong>القياس:</strong> تساوي 180°</td>
+                        <td class="card-body-cell"><strong>الوصف:</strong> ضلعاها على استقامة واحدة.</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -495,7 +529,7 @@
             
             <div class="interactive-container" style="background: white; border: 1px dashed #cbd5e1; margin-top: 15px;">
                 <div class="angle-canvas-container">
-                    <svg id="angleSvg" width="280" height="180" viewBox="0 0 300 200">
+                    <svg id="angleSvg" width="260" height="160" viewBox="0 0 300 200">
                         <path id="svgAngleSector" d="" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4" />
                         <line x1="50" y1="160" x2="250" y2="160" stroke="#2563eb" stroke-width="3" />
                         <line id="svgRay" x1="50" y1="160" x2="200" y2="40" stroke="#2563eb" stroke-width="3" />
