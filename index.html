@@ -13,7 +13,7 @@
             --primary-color: #1e3a8a;
             --primary-light: #3b82f6;
             --accent-color: #0d9488;
-            --bg-color: #f1f5f9;
+            --bg-color: #f8fafc;
             --card-bg: #ffffff;
             --text-color: #0f172a;
             --text-muted: #475569;
@@ -36,111 +36,116 @@
             color: var(--text-color);
             direction: rtl;
             text-align: right;
-            line-height: 1.9;
-            padding: 20px;
+            line-height: 1.8;
+            padding: 15px;
         }
 
         .container {
             max-width: 950px;
             margin: 0 auto;
             background: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
         }
 
         header {
             text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 3px solid var(--primary-light);
+            margin-bottom: 30px;
+            border-bottom: 3px solid #eff6ff;
             padding-bottom: 20px;
         }
 
         header h1 {
             color: var(--primary-color);
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
-        header p {
-            color: var(--text-muted);
+        header h2 {
             font-size: 1.1rem;
+            color: var(--primary-light);
+            margin-bottom: 5px;
+        }
+
+        header h3 {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 600;
         }
 
         .section {
-            margin-bottom: 35px;
-            padding: 25px;
+            margin-bottom: 25px;
+            padding: 20px;
             border: 1px solid var(--border-color);
             border-radius: 16px;
             background-color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
         }
 
         .section-title {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             color: var(--primary-color);
-            margin-bottom: 20px;
-            border-bottom: 2px solid #f0fdf4;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f8fafc;
             padding-bottom: 8px;
         }
 
         .section-title span.icon {
             background-color: #dbeafe;
             color: var(--primary-color);
-            width: 38px;
-            height: 38px;
+            width: 34px;
+            height: 34px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 10px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
+            flex-shrink: 0;
         }
 
         p, li {
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: var(--text-color);
         }
 
         ul, ol {
-            margin-right: 25px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-
-        li {
+            margin-right: 20px;
+            margin-top: 8px;
             margin-bottom: 8px;
         }
 
-        .highlight-box {
-            background-color: #f0f9ff;
-            border-right: 4px solid var(--primary-light);
-            padding: 15px 20px;
-            border-radius: 8px;
-            margin: 15px 0;
+        li {
+            margin-bottom: 6px;
         }
 
         .table-responsive {
             overflow-x: auto;
             margin-top: 15px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            white-space: nowrap;
         }
 
         th, td {
-            border: 1px solid var(--border-color);
-            padding: 14px 16px;
+            padding: 12px 14px;
             text-align: center;
+            font-size: 0.95rem;
         }
 
         th {
@@ -149,16 +154,20 @@
             font-weight: 700;
         }
 
+        tr:not(:last-child) td {
+            border-bottom: 1px solid var(--border-color);
+        }
+
         tr:nth-child(even) {
             background-color: #f8fafc;
         }
 
         .badge {
             display: inline-block;
-            padding: 4px 12px;
+            padding: 4px 10px;
             border-radius: 20px;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: white;
         }
 
@@ -170,25 +179,23 @@
         .interactive-container {
             background: #f8fafc;
             border: 2px solid #e2e8f0;
-            padding: 25px;
+            padding: 15px;
             border-radius: 16px;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .protractor-box {
             position: relative;
-            width: 450px;
-            height: 230px;
-            margin: 20px auto;
+            width: 100%;
+            max-width: 400px;
+            height: 210px;
+            margin: 15px auto;
             background-image: url('s.png');
-            background-size: cover;
-            background-position: center;
+            background-size: contain;
+            background-position: center bottom;
             background-repeat: no-repeat;
-            border-top-left-radius: 225px;
-            border-top-right-radius: 225px;
-            border: 2px solid rgba(0,0,0,0.15);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-radius: 12px;
             overflow: hidden;
         }
 
@@ -219,7 +226,7 @@
             position: absolute;
             bottom: 0;
             left: 50%;
-            width: 200px;
+            width: 180px;
             height: 3px;
             background-color: #dc2626;
             transform-origin: left center;
@@ -228,8 +235,8 @@
         }
 
         .controls-box {
-            margin-top: 25px;
-            max-width: 450px;
+            margin-top: 15px;
+            max-width: 400px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -239,6 +246,7 @@
             justify-content: space-between;
             font-weight: bold;
             margin-bottom: 8px;
+            font-size: 0.95rem;
         }
 
         input[type=range] {
@@ -251,37 +259,37 @@
         }
 
         .live-status {
-            margin-top: 15px;
-            padding: 12px;
+            margin-top: 12px;
+            padding: 10px;
             border-radius: 10px;
             background: white;
             border: 1px solid var(--border-color);
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
         }
 
         .quiz-card {
             background: #ffffff;
             border: 1px solid var(--border-color);
-            padding: 20px;
+            padding: 18px;
             border-radius: 12px;
             margin-top: 15px;
         }
 
         .quiz-options {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 12px;
-            margin: 20px 0;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
         }
 
         .quiz-btn {
             background-color: #f1f5f9;
             border: 2px solid var(--border-color);
-            padding: 12px;
+            padding: 10px;
             border-radius: 10px;
             font-family: 'Cairo', sans-serif;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--text-color);
             cursor: pointer;
@@ -303,45 +311,88 @@
             background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 12px 30px;
-            font-size: 1rem;
+            padding: 10px 24px;
+            font-size: 0.95rem;
             font-weight: 700;
             border-radius: 8px;
             cursor: pointer;
             font-family: 'Cairo', sans-serif;
-            transition: background 0.2s ease;
+            transition: background 0.2s ease, transform 0.1s ease;
         }
 
         .action-btn:hover {
             background-color: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .action-btn.secondary {
+            background-color: #64748b;
+        }
+
+        .action-btn.secondary:hover {
+            background-color: #475569;
+        }
+
+        .buttons-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
         }
 
         .feedback-message {
-            margin-top: 15px;
-            font-size: 1.1rem;
+            margin-top: 12px;
+            font-size: 1rem;
             font-weight: 700;
         }
 
         .input-text-box {
-            padding: 10px;
-            font-size: 1.1rem;
+            padding: 8px;
+            font-size: 1rem;
             border: 2px solid var(--border-color);
             border-radius: 8px;
-            width: 140px;
+            width: 120px;
             text-align: center;
             font-family: 'Cairo', sans-serif;
-            margin-left: 10px;
+            margin-left: 8px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .input-text-box:focus {
+            border-color: var(--primary-light);
         }
 
         .angle-canvas-container {
             position: relative;
-            width: 300px;
-            height: 200px;
+            width: 100%;
+            max-width: 280px;
+            height: 180px;
             margin: 0 auto;
             background: #f8fafc;
             border: 2px dashed #cbd5e1;
             border-radius: 12px;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* تحسين التجاوب للشاشات المتوسطة والكبيرة */
+        @media (min-width: 768px) {
+            body {
+                padding: 30px;
+            }
+            .container {
+                padding: 40px;
+            }
+            header h1 {
+                font-size: 2.2rem;
+            }
+            .section {
+                padding: 25px;
+            }
         }
     </style>
 </head>
@@ -351,7 +402,7 @@
     <header>
         <h1>📐 درس قياس الزوايا وتصنيفها</h1>
         <h2>مادة الرياضيات — الشرح التفاعلي والتمارين المدرسية</h2>
-        <h3>الاستاذ عبدالمنعم هلال</h3>
+        <h3>الأستاذ عبدالمنعم هلال</h3>
     </header>
 
     <!-- 1. مفهوم الزاوية -->
@@ -360,7 +411,7 @@
             <span class="icon">1</span>
             <h2>مفهوم الزاوية وعناصرها الأساسية</h2>
         </div>
-        <p><b>نصف المستقيم: </b >هو جزء من المستقيم له بداية وليس له نهاية    </p>
+        <p><b>نصف المستقيم:</b> هو جزء من المستقيم له بداية وليس له نهاية.</p>
         <p><b>الزاوية:</b> تتشكل من التقاء نصفي مستقيمين لهما نقطة البداية نفسها (رأس الزاوية). وتسمى بثلاثة حروف مثل {BAC} بحيث يكون رأس الزاوية في المنتصف تماماً.</p>
     </div>
 
@@ -379,7 +430,7 @@
             <span class="icon">3</span>
             <h2>أداة القياس: المنقلة الهندسية</h2>
         </div>
-        <p>المنقلة أداة شفافة مرقمة من ^0 إلى ^180 بجهتين لمساعدة الطالب على القياس الصحيح ورسم الزوايا بدقة.</p>
+        <p>المنقلة أداة شفافة مرقمة من 0° إلى 180° بجهتين لمساعدة الطالب على القياس الصحيح ورسم الزوايا بدقة.</p>
 
         <div class="interactive-container">
             <h3>🧭 محاكي المنقلة التعليمي</h3>
@@ -421,10 +472,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td><span class="badge badge-acute">حادة</span></td><td>أكثر من 0 درجة وأقل من  90 درجة  </td><td>أصغر من الزاوية القائمة</td></tr>
-                    <tr><td><span class="badge badge-right">قائمة</span></td><td>تساوي 90 درجة</td><td>تشكل تعامدًا تامًا.</td></tr>
-                    <tr><td><span class="badge badge-obtuse">منفرجة</span></td><td>اكثر من 90 درجة وأقل من 180 درجة </td><td>أكبر من القائمة وأصغر من المستقيمة.</td></tr>
-                    <tr><td><span class="badge badge-straight">مستقيمة</span></td><td>تساوي 180 درجة</td><td>ضلعاها على استقامة واحدة.</td></tr>
+                    <tr><td><span class="badge badge-acute">حادة</span></td><td>أكثر من 0° وأقل من 90°</td><td>أصغر من الزاوية القائمة</td></tr>
+                    <tr><td><span class="badge badge-right">قائمة</span></td><td>تساوي 90°</td><td>تشكل تعامدًا تامًا.</td></tr>
+                    <tr><td><span class="badge badge-obtuse">منفرجة</span></td><td>أكثر من 90° وأقل من 180°</td><td>أكبر من القائمة وأصغر من المستقيمة.</td></tr>
+                    <tr><td><span class="badge badge-straight">مستقيمة</span></td><td>تساوي 180°</td><td>ضلعاها على استقامة واحدة.</td></tr>
                 </tbody>
             </table>
         </div>
@@ -437,45 +488,40 @@
             <h2>تمارين تفاعلية شاملة</h2>
         </div>
 
-        <!-- التمرين الأول: رسمة تفاعلية لتقاطع مستقيمين وتحديد موقع النقطة -->
+        <!-- التمرين الأول -->
         <div class="quiz-card">
-            <h3>التمرين الأول: موقع النقطة بالنسبة للزاوية (رسم تفاعلي)</h3>
-            <p style="margin-top: 10px; font-weight: 650;">تأمل الرسم التفاعلي أدناه الذي يوضح زاوية ناتجة عن تقاطع مستقيمين والنقطة الحمراء (M). هل تقع النقطة داخل الزاوية أم خارجها؟</p>
+            <h3>التمرين الأول: موقع النقطة بالنسبة للزاوية</h3>
+            <p style="margin-top: 8px; font-weight: 650;">تأمل الرسم التفاعلي أدناه الذي يوضح زاوية والنقطة الحمراء (M). هل تقع النقطة داخل الزاوية أم خارجها؟</p>
             
             <div class="interactive-container" style="background: white; border: 1px dashed #cbd5e1; margin-top: 15px;">
                 <div class="angle-canvas-container">
-                    <svg id="angleSvg" width="300" height="200" viewBox="0 0 300 200">
-                        <!-- تظليل منطقة وحيز الزاوية بوضوح في كل سؤال -->
+                    <svg id="angleSvg" width="280" height="180" viewBox="0 0 300 200">
                         <path id="svgAngleSector" d="" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4" />
-                        <!-- ضلع أساسي أفقي -->
                         <line x1="50" y1="160" x2="250" y2="160" stroke="#2563eb" stroke-width="3" />
-                        <!-- ضلع متحرك للزاوية -->
                         <line id="svgRay" x1="50" y1="160" x2="200" y2="40" stroke="#2563eb" stroke-width="3" />
-                        <!-- رأس الزاوية -->
                         <circle cx="50" cy="160" r="5" fill="#1e3a8a" />
                         <text x="35" y="175" font-family="Cairo" font-size="14" fill="#1e3a8a" font-weight="bold">A</text>
-                        <!-- النقطة التفاعلية -->
                         <circle id="svgPoint" cx="120" cy="110" r="7" fill="#dc2626" />
                         <text id="svgPointLabel" x="130" y="105" font-family="Cairo" font-size="14" fill="#dc2626" font-weight="bold">M</text>
                     </svg>
                 </div>
             </div>
 
-            <div class="quiz-options" id="q1Options" style="margin-top: 20px;">
+            <div class="quiz-options" id="q1Options">
                 <button class="quiz-btn" onclick="selectPointAnswer(this, 'داخل')">داخل الزاوية</button>
                 <button class="quiz-btn" onclick="selectPointAnswer(this, 'خارج')">خارج الزاوية</button>
             </div>
-            <div style="text-align: center;">
+            <div class="buttons-group">
                 <button class="action-btn" onclick="checkPointAnswer()">تحقق من موقع النقطة</button>
-                <button class="action-btn" style="background-color: #64748b; margin-right: 10px;" onclick="initPointExercise()">سؤال جديد</button>
+                <button class="action-btn secondary" onclick="initPointExercise()">سؤال جديد</button>
             </div>
             <div id="pointFeedback" class="feedback-message" style="text-align: center;"></div>
         </div>
 
-        <!-- التمرين الثاني: قياس الزاوية على المنقلة (قيم عشرات فقط) -->
-        <div class="quiz-card" style="margin-top: 25px;">
+        <!-- التمرين الثاني -->
+        <div class="quiz-card" style="margin-top: 20px;">
             <h3>التمرين الثاني: قياس الزاوية من على المنقلة</h3>
-            <p id="angleQuizText" style="margin-top: 10px; font-weight: 650;"></p>
+            <p id="angleQuizText" style="margin-top: 8px; font-weight: 650;"></p>
             
             <div class="interactive-container" style="background: white; border: 1px dashed #cbd5e1; margin-top: 15px;">
                 <div class="protractor-box">
@@ -488,17 +534,17 @@
             <div style="margin: 15px 0; text-align: center;">
                 <input type="number" id="userAngleInput" class="input-text-box" placeholder="أدخل قياسك"> <b>درجة (°)</b>
             </div>
-            <div style="text-align: center;">
+            <div class="buttons-group">
                 <button class="action-btn" onclick="checkAngleValueAnswer()">تحقق من قياس الزاوية</button>
-                <button class="action-btn" style="background-color: #64748b; margin-right: 10px;" onclick="initAngleValueExercise()">سؤال جديد</button>
+                <button class="action-btn secondary" onclick="initAngleValueExercise()">سؤال جديد</button>
             </div>
             <div id="angleValueFeedback" class="feedback-message" style="text-align: center;"></div>
         </div>
 
-        <!-- التمرين الثالث: تصنيف الزاوية على المنقلة (قيم عشرات فقط) -->
-        <div class="quiz-card" style="margin-top: 25px;">
+        <!-- التمرين الثالث -->
+        <div class="quiz-card" style="margin-top: 20px;">
             <h3>التمرين الثالث: تصنيف نوع الزاوية من على المنقلة</h3>
-            <p id="classifyQuizText" style="margin-top: 10px; font-weight: 650;"></p>
+            <p id="classifyQuizText" style="margin-top: 8px; font-weight: 650;"></p>
             
             <div class="interactive-container" style="background: white; border: 1px dashed #cbd5e1; margin-top: 15px;">
                 <div class="protractor-box">
@@ -508,15 +554,15 @@
                 </div>
             </div>
 
-            <div class="quiz-options" id="q3Options" style="justify-content: center; margin-top: 20px;">
+            <div class="quiz-options" id="q3Options">
                 <button class="quiz-btn" onclick="selectClassifyAnswer(this, 'حادة')">حادة</button>
                 <button class="quiz-btn" onclick="selectClassifyAnswer(this, 'قائمة')">قائمة</button>
                 <button class="quiz-btn" onclick="selectClassifyAnswer(this, 'منفرجة')">منفرجة</button>
                 <button class="quiz-btn" onclick="selectClassifyAnswer(this, 'مستقيمة')">مستقيمة</button>
             </div>
-            <div style="text-align: center; margin-top: 15px;">
+            <div class="buttons-group">
                 <button class="action-btn" onclick="checkClassifyAnswer()">تحقق من التصنيف</button>
-                <button class="action-btn" style="background-color: #64748b; margin-right: 10px;" onclick="initClassifyExercise()">سؤال جديد</button>
+                <button class="action-btn secondary" onclick="initClassifyExercise()">سؤال جديد</button>
             </div>
             <div id="classifyFeedback" class="feedback-message" style="text-align: center;"></div>
         </div>
@@ -531,7 +577,7 @@
         return tensAngles[index];
     }
 
-    // 1. محاكي المنقلة الأساسي
+    // محاكي المنقلة الأساسي
     function updateProtractorSimulator(deg) {
         document.getElementById('angleDegreeDisplay').textContent = deg + '°';
         const ray = document.getElementById('rotatableRay');
@@ -551,7 +597,7 @@
     }
     updateProtractorSimulator(60);
 
-    // 2. التمرين الأول: تظليل حيز الزاوية ووضع النقطة في الجهة المعاكسة تماماً عند خروجها
+    // التمرين الأول
     let currentPointState = "";
     let userSelectedPointAns = "";
 
@@ -560,7 +606,7 @@
         document.getElementById('pointFeedback').textContent = "";
         document.querySelectorAll('#q1Options .quiz-btn').forEach(b => b.classList.remove('active'));
 
-        let randomDeg = Math.floor(Math.random() * 100) + 40; // زاوية واضحة
+        let randomDeg = Math.floor(Math.random() * 100) + 40;
         let rad = (randomDeg * Math.PI) / 180;
 
         let x2 = 50 + 130 * Math.cos(-rad);
@@ -570,7 +616,6 @@
         svgRay.setAttribute('x2', x2);
         svgRay.setAttribute('y2', y2);
 
-        // رسم تظليل القوس (حيز الزاوية) ليشير لجهة وزاوية الفتحة بوضوح
         let svgSector = document.getElementById('svgAngleSector');
         let largeArc = randomDeg > 180 ? 1 : 0;
         svgSector.setAttribute('d', `M 50 160 L ${x2} ${y2} A 130 130 0 ${largeArc} 0 180 160 Z`);
@@ -580,16 +625,14 @@
 
         let px, py;
         if (isInside) {
-            // نقطة داخل الحيز المحصور بين الضلعين
             let innerDeg = randomDeg * 0.5;
             let innerRad = (innerDeg * Math.PI) / 180;
             let dist = 70;
             px = 50 + dist * Math.cos(-innerRad);
             py = 160 + dist * Math.sin(-innerRad);
         } else {
-            // نقطة خارج الزاوية تماماً في الجهة المعاكسة (تحت الضلع الأفقي أو في الاتجاه المعاكس لفتحته)
             px = 120 + Math.random() * 60;
-            py = 185; // أسفل الخط الأفقي تماماً (خارج الحيز الداخلي للزاوية)
+            py = 185;
         }
 
         let svgPoint = document.getElementById('svgPoint');
@@ -623,7 +666,7 @@
         }
     }
 
-    // 3. تمرين قياس الزاوية عشوائياً (مضاعفات العشرات فقط)
+    // التمرين الثاني
     let targetAngleValue2 = 0;
 
     function initAngleValueExercise() {
@@ -633,7 +676,7 @@
         targetAngleValue2 = getRandomTensAngle();
         document.getElementById('quizRay2').style.transform = `rotate(-${targetAngleValue2}deg)`;
         
-        document.getElementById('angleQuizText').textContent = `تأمل المنقلة أدناه. الشعاع الأحمر مستقر على تدريج معين (من مضاعفات العشرات). اقرأ القياس واكتب القيمة بدقة:`;
+        document.getElementById('angleQuizText').textContent = `تأمل المنقلة أدناه. الشعاع الأحمر مستقر على تدريج معين. اقرأ القياس واكتب القيمة بدقة:`;
     }
     initAngleValueExercise();
 
@@ -654,7 +697,7 @@
         }
     }
 
-    // 4. تمرين تصنيف الزاوية عشوائياً (مضاعفات العشرات فقط)
+    // التمرين الثالث
     let targetAngleValue3 = 0;
     let selectedClassifyType = "";
 
@@ -666,7 +709,7 @@
         targetAngleValue3 = getRandomTensAngle();
         document.getElementById('quizRay3').style.transform = `rotate(-${targetAngleValue3}deg)`;
         
-        document.getElementById('classifyQuizText').textContent = `انظر إلى المنقلة أدناه وتطابق الشعاع مع تدريجات العشرات، ثم حدد نوع هذه الزاوية:`;
+        document.getElementById('classifyQuizText').textContent = `انظر إلى المنقلة أدناه وتطابق الشعاع مع التدريجات، ثم حدد نوع هذه الزاوية:`;
     }
     initClassifyExercise();
 
